@@ -2,6 +2,7 @@ import React,{useState,useEffect } from 'react';
 import Login from './login';
 import fire from './fire';
 import Hero from './hero';
+import Form from './form';
 import './App.css';
 
 
@@ -82,8 +83,10 @@ const authListener=()=>{
 
   return (
     <div className="App">
-      {user ? (
+      {user ? (<>
         <Hero handleLogout={handleLogout}/>
+        <Form />
+        </>
       ) :(
         <Login
         email={email}
