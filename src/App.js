@@ -1,6 +1,7 @@
 import React,{useState,useEffect } from 'react';
 import Login from './login';
 import fire from './fire';
+import Hero from './hero';
 import './App.css';
 
 
@@ -73,26 +74,32 @@ const authListener=()=>{
   }
   });
 };
-/*
-useEffect(()=>{
-  authListener();
-},[]);
 
-*/
+ useEffect(()=>{
+   authListener();
+ },[]);
+
+
   return (
     <div className="App">
-    <Login
-    email={email}
-    setEmail={setEmail}
-    password={password}
-    setPassword={setPassword}
-    handleLogin={handleLogin}
-    handleSignup={handleSignup}
-    hasAccount={hasAccount}
-    setHasAccount={setHasAccount}
-    emailError={emailError}
-    passwordError={passwordError}
-    />
+      {user ? (
+        <Hero handleLogout={handleLogout}/>
+      ) :(
+        <Login
+        email={email}
+        setEmail={setEmail}
+        password={password}
+        setPassword={setPassword}
+        handleLogin={handleLogin}
+        handleSignup={handleSignup}
+        hasAccount={hasAccount}
+        setHasAccount={setHasAccount}
+        emailError={emailError}
+        passwordError={passwordError}
+        />
+      )}
+
+    
     </div>
   );
 };
